@@ -1,3 +1,12 @@
+'''
+Good testcase:
+RS
+PR
+PP
+Answer should be like:
+PPR
+'''
+
 def win(a, b):
     if a == 'P' and b == 'R':
         return True
@@ -16,11 +25,11 @@ def solve(C):
             if all(win(s, c[i]) for c in C):
                 return ''.join(R) + s
 
-        # even for all
+        # not losing to anyone
         for s in 'PSR':
             if all((not win(c[i], s)) for c in C):
                 R.append(s)
-                C = [c for c in C if not win(s, c[i])]
+                C = [c for c in C if not win(s, c[i])] # eliminate loser
                 break
         else:
             return 'IMPOSSIBLE'
@@ -34,7 +43,7 @@ for tc in range(1, TC + 1):
     A = int(input())
     C = [input() for _ in range(A)]
     for i, line in enumerate(C):
-        C[i] = line * (1000 // len(line))
+        C[i] = line * (1000 // len(line)) # repeat to have length 500
         C[i] = C[i][:500]
 
     print('Case #{}: {}'.format(tc, solve(C)))

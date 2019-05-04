@@ -44,7 +44,5 @@ for tc in range(1, TC + 1):
     c = input()
     ans = P[0] if P[0][-2] != c else P[1]
 
-    print(''.join(ans), flush=True)
+    print(ans, flush=True)
     ok = input()
-
-    
