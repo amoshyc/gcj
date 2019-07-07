@@ -1,1 +1,1 @@
-# gcj
+# online-judge
